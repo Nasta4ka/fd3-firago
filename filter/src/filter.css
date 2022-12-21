@@ -1,0 +1,55 @@
+.filter {
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    flex-wrap: wrap;
+   
+
+}
+.title {
+    display: flex;
+    width: 400px;
+    box-sizing: border-box;
+    justify-content: center;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 400;
+}
+.textarea {
+    width: 300px;
+    font-size: 18px;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.checkbox {
+    width: 30px;
+    display: flex;
+    height: 30px;
+    margin: 10px;
+    align-self: center;
+    box-sizing: border-box;
+}
+.text {
+    display: flex;
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.button {
+display: flex;
+align-self: center;
+justify-content: center;
+height: 30px;
+width: 70px;
+justify-content: center;
+align-items: center;
+box-sizing: border-box;
+margin: 10px;
+background-color: aquamarine;
+}
