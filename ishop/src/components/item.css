@@ -24,7 +24,7 @@ margin: 30px;
     justify-content: space-around;
 }
 
-.item {
+.item, .item_selected {
     display: flex;
     width: 270px;
     border: 3px dotted lavender;
@@ -35,10 +35,21 @@ margin: 30px;
     padding: 10px;
     box-sizing: border-box;
 }
+
+.item_selected {
+    box-shadow: inset 0 0 50px lavender;
+}
+
 .item span {
     display: inline-flex;
     margin: 5px;
 }
 .item span:first-child {
     font-weight: 600;
+}
+
+.delete_button {
+    display: inline-flex;
+    align-self: flex-end;
+    background-color: rgb(202, 72, 72);
 }
