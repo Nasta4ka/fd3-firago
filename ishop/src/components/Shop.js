@@ -22,8 +22,7 @@ export default class Shop extends Component {
 
   makeDeleted(code) {
     if (window.confirm("Delete the item?")) {
-     let newList = this.state.currentList.slice()
-     this.setState({currentList: newList.filter(el => el.code !== code)})
+     this.setState({currentList: this.state.currentList.filter(el => el.code !== code)})
   }
 }
 

@@ -10,7 +10,6 @@ export default class Item extends Component {
       itemCode: this.props.shopItem.code,
       itemUrl: this.props.shopItem.url,
       itemStock: this.props.shopItem.stock,
-      active: this.props.active,
     };
   }
 
