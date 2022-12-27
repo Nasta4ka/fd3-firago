@@ -1,71 +1,50 @@
 import React, { Component } from "react";
-import "./item.css";
 import PropTypes from "prop-types";
 
 export default class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentList: props.shopItems, //не очень, но лучше не получается)
-      selectedItem: {},
+      itemName: this.props.shopItem.name,
+      itemPrice: this.props.shopItem.price,
+      itemCode: this.props.shopItem.code,
+      itemUrl: this.props.shopItem.url,
+      itemStock: this.props.shopItem.stock,
+      active: this.props.active,
     };
   }
 
-  changeSelect(el) {
-    this.setState((prevstate) => ({ selectedItem: el }));
-  }
+  deleteItem = (eo) => {
+    eo.stopPropagation();
+    this.props.deleteFunc(this.state.itemCode);
+  };
 
-  setItems() {
-    this.setState({ currentList: this.props.shopItems });
-  }
-
-  deleteItem(el) {
-    this.setState({ selectedItem: " " });
-    if (window.confirm("Delete the item?")) {
-      this.setState((prevstate) => ({
-        currentList: this.state.currentList.filter((item) => item !== el),
-      }));
-    }
-  }
+  select = () => {
+    this.props.refreshFunc(this.state.itemCode);
+  };
 
   render() {
     return (
-      <section className="items">
-        <h2 className="items_title">будь в тренде с {this.props.shopName}</h2>
-        <ul className="item_list">
-          {this.state.currentList.map((el) => (
-            <li
-              onClick={() => {
-                this.changeSelect(el);
-              }}
-              key={el.code}
-              className={
-                this.state.selectedItem === el ? "item_selected" : "item"
-              }
-            >
-              <button
-                onClick={() => {
-                  this.deleteItem(el);
-                }}
-                className="delete_button"
-              >
-                x
-              </button>
-              <span>{el.name}</span>
-              <span>
-                <b>{el.price}$</b>
-              </span>
-              <img src={el.url} width={250} alt="товар" />
-              <span>на складе: {el.stock}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <li
+        onClick={this.select}
+        key={this.state.itemCode}
+        className={this.props.active === true ? "item_selected" : "item"}
+      >
+        <button onClick={this.deleteItem} className="delete_button">
+          x
+        </button>
+        <span>{this.state.itemName}</span>
+        <span>
+          <b>{this.state.itemPrice}$</b>
+        </span>
+        <img src={this.state.itemUrl} width={250} alt="товар" />
+        {<span>на складе: {this.state.itemStock}</span>}
+      </li>
     );
   }
 }
 
 Item.propTypes = {
-  shopName: PropTypes.string,
-  shopItems: PropTypes.array,
+  shopItem: PropTypes.object,
+  active: PropTypes.bool,
 };

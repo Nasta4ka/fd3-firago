@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-        <Shop />
+      <main><Shop shopName={'iShop'}/></main>
       <Footer />
     </div>
   );

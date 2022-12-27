@@ -4,7 +4,7 @@ import wordArr from "./array";
 function App() {
   return (
     <div className="container">
-      <Filter listOfWords={wordArr}/>
+      <Filter listOfWords={wordArr} />
     </div>
   );
 }
