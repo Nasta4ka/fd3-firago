@@ -53,7 +53,6 @@ export default class Shop extends Component {
         renderCard: true,
         activeItem: this.state.currentList[i],
       });
-
     }
   }
 
@@ -74,13 +73,12 @@ export default class Shop extends Component {
   edit(code) {
     this.setState({ renderEdit: true });
     let i = this.findIndex(code);
-    this.setState((prevstate) => ({ activeCode: code }));
-    this.setState((prevstate) => ({ editedItem: this.state.currentList[i] }));
+    this.setState({ activeCode: code });
+    this.setState({ editedItem: this.state.currentList[i] });
   }
 
   saveChange(name, price, code, url, stock) {
     let i = this.findIndex(code);
-
     if (i > -1) {
       this.setState((prevState) => ({
         currentList: prevState.currentList.map((obj) =>
@@ -98,7 +96,7 @@ export default class Shop extends Component {
       let obj = {
         code: code.toString(),
         name: name,
-        description: "с этим проблемы) ",
+        description: "любое описание ",
         price: price,
         stock: stock,
         url: url,
@@ -171,14 +169,8 @@ export default class Shop extends Component {
         </button>
         {this.state.renderCard &&
           !this.state.renderEdit &&
-          !this.state.renderNew && 
-          this.state.activeItem&& (
-            <Card
-              itemInfo={
-                this.state.activeItem
-              }
-            />
-          )}
+          !this.state.renderNew &&
+          this.state.activeItem && <Card itemInfo={this.state.activeItem} />}
         {this.state.renderEdit && !this.state.renderNew && (
           <Edit
             itemInfo={this.state.editedItem}

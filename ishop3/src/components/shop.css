@@ -119,3 +119,9 @@ margin: 30px;
 .button:last-of-type {
     background-color: salmon;
 }
+
+.error {
+    font-size: 14px;
+    color: rgb(165, 38, 38);
+    margin: 5px 3px;
+}
