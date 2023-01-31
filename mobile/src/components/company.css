@@ -1,0 +1,84 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background-color: lightgoldenrodyellow;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons_group {
+    display: flex;
+}
+
+.buttons_group button {
+ min-width: 50px;
+ border-radius: 3px;
+ padding: 7px 15px;
+ border: 2px solid blue;
+ background-color: mintcream;
+ font-weight: bolder;
+ margin: 5px;
+}
+
+input {
+    display: inline;
+    width: 120px;
+    outline: none;
+    background-color: inherit;
+    border: none;
+    justify-content: flex-start;
+    
+}
+
+.cell, .headcell {
+    display: flex;
+    width: 900px;
+    padding: 4px 0;
+    border-bottom: 2px solid sandybrown;
+    margin: 0;
+}
+
+.cell span {
+    display: inline-flex;
+    width: 120px;
+   justify-content: flex-start;
+   
+}
+
+
+form {
+    display: inline;
+    width: 900px;
+    display: flex;
+}
+
+
+.row {
+    display: flex;
+    width: 900px;
+}
+.headcell span { 
+display: inline-flex;
+width: 120px;
+font-weight: 700;
+font-size: 13px;
+justify-content: center;
+}
+
+form input:nth-of-type(4) {
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+.button {
+    display: flex;
+    align-self: center;
+    background-color: skyblue;
+    width: 100px;
+    padding: 5px 10px;
+    justify-content:center;
+    border: 2px solid blue;
+    margin-right: 20px;
+}
