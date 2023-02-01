@@ -1,84 +1,64 @@
+import Controls from "./Controls";
+import List from "./List";
 import "./filter.css";
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-export default class Filter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentList: props.listOfWords, //пишут, что плохая практика
-      isChecked: false,
-      query: "",
-    };
-    this.handleButton = this.handleButton.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
-    this.handleQuery = this.handleQuery.bind(this);
+import { useEffect, useState } from "react";
+
+export default function Filter(props) {
+  const [list, setList] = useState([...props.list]);
+  const [query, setQuery] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
+
+  useEffect(() => {
+    handleFilter();
+  }, [query, checkbox]);
+
+  function cbQuery(value) {
+    setQuery(value);
   }
 
-  handleButton() {
-    this.setState({ isChecked: false });
-    this.setState({ query: "" });
-    this.setState({ currentList: this.props.listOfWords });
+  function cbCheckbox(value) {
+    setCheckbox(value);
   }
 
-  handleQuery(value) {
-    this.setState({ query: value }, this.handleFilter);
+  function cbButton() {
+    setQuery("");
+    setCheckbox(false);
+    setList([...props.list]);
   }
 
-  handleCheckbox(check) {
-    this.setState({ isChecked: check }, this.handleFilter);
-  }
+  function handleFilter() {
+    let sort = checkbox;
+    console.log(list);
+    if (sort) {
+      let newList = [...props.list];
+      if (query.length) {
+        newList = newList.filter((word) => word.includes(query));
+      }
+      newList = newList.sort();
 
-  handleFilter() {
-    let subStrt = this.state.query.toLowerCase();
-    let isChecked = this.state.isChecked;
-    let list = this.props.listOfWords.slice(0);
-    if (isChecked === true) {
-      this.setState({
-        currentList: list
-          .filter((item) => {
-            return item.toLowerCase().includes(`${subStrt}`);
-          })
-          .sort(),
-      });
+      setList([...newList]);
     }
-    if (isChecked === false) {
-      this.setState({
-        currentList: list.filter((item) => {
-          return item.toLowerCase().includes(`${subStrt}`);
-        }),
-      });
+
+    if (!sort) {
+      let newList = [...props.list];
+      if (query.length) {
+        newList = newList.filter((word) => word.includes(query));
+      }
+      setList([...newList]);
     }
   }
 
-  render() {
-    return (
-      <div className="filter">
-        <h3 className="title">my filter</h3>
-        <input
-          type="checkbox"
-          className="checkbox"
-          checked={this.state.isChecked}
-          onChange={(event) => this.handleCheckbox(event.target.checked)}
-        ></input>
-        <input
-          type="text"
-          className="text"
-          value={this.state.query}
-          onChange={(event) => this.handleQuery(event.target.value)}
-        ></input>
-        <button type="button" className="button" onClick={this.handleButton}>
-          сброс
-        </button>
-        <textarea
-          className="textarea"
-          readOnly={true}
-          value={this.state.currentList.join(" ")}
-        ></textarea>
-      </div>
-    );
-  }
+  return (
+    <div className="filter">
+      <h3 className="title">my filter</h3>
+      <Controls
+        checked={checkbox}
+        value={query}
+        cbButton={cbButton}
+        cbQuery={cbQuery}
+        cbCheckbox={cbCheckbox}
+      ></Controls>
+      <List value={list.join(" ")}></List>
+    </div>
+  );
 }
-
-Filter.propTypes = {
-  listOfWords: PropTypes.array,
-};
