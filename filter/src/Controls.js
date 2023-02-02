@@ -13,7 +13,7 @@ export default function Controls(props) {
   };
 
   return (
-    <FormGroup row={true} sx={{ alignItems: "center" }}>
+    <FormGroup row={true} /* sx={{ alignItems: "center" }} */>
       <input
         type="checkbox"
         className="checkbox"
@@ -30,7 +30,7 @@ export default function Controls(props) {
         variant="contained"
         size="small"
         color="error"
-        sx={{ width: 90, height: 30 }}
+/*         sx={{ width: 90, height: 30}} */
         onClick={handleButton}
       >
         сброс

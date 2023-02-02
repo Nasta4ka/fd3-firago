@@ -28,7 +28,6 @@ export default function Filter(props) {
 
   function handleFilter() {
     let sort = checkbox;
-    console.log(list);
     if (sort) {
       let newList = [...props.list];
       if (query.length) {
