@@ -9,45 +9,32 @@ export default function Filter(props) {
   const [checkbox, setCheckbox] = useState(false);
 
   useEffect(() => {
-    handleFilter();
+      let sort = checkbox;
+      let newList = [...props.list];
+        if (query.length) {
+          newList = newList.filter((word) => word.includes(query));
+        }
+        if (sort) {
+          newList = newList.sort();}
+  
+      setList([...newList]);
+      
   }, [query, checkbox]);
 
   function cbQuery(value) {
     setQuery(value);
   }
 
-  function cbCheckbox(value) {
-    setCheckbox(value);
+  function cbCheckbox(bool) {
+    setCheckbox(bool);
   }
 
   function cbButton() {
     setQuery("");
     setCheckbox(false);
-    setList([...props.list]);
   }
 
-  function handleFilter() {
-    let sort = checkbox;
-    if (sort) {
-      let newList = [...props.list];
-      if (query.length) {
-        newList = newList.filter((word) => word.includes(query));
-      }
-      newList = newList.sort();
-
-      setList([...newList]);
-    }
-
-    if (!sort) {
-      let newList = [...props.list];
-      if (query.length) {
-        newList = newList.filter((word) => word.includes(query));
-      }
-      setList([...newList]);
-    }
-  }
-
-  return (
+   return (
     <div className="filter">
       <h3 className="title">my filter</h3>
       <Controls
