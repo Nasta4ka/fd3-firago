@@ -22,3 +22,46 @@ overflow: hidden;
 .hero-text-wrapper p {
     font-size: 22px;
 }
+
+.categories-wrapper {
+    display: flex;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+
+.category-img {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 4px;
+    height: 220px;
+    overflow-y: hidden;
+     text-decoration: none;
+}
+
+.category-img:hover {
+     text-decoration: none;
+     cursor: pointer;
+    
+}
+
+.category-img h3 {
+    color: #505050;
+   
+}
+.category-title:visited,  .category-title:active {
+    color: #505050;
+}
+
+.title-for-categories {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-top: 30px;
+
+}
