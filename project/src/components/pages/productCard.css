@@ -1,0 +1,20 @@
+.product-card {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-image {
+  display: flex;
+  flex-shrink: 1;
+  overflow-x: hidden;
+  max-height: 400px;
+}
+
+.product-card-description {
+  display: flex;
+  padding: 10px;
+  margin: 0 10px 10px 10px;
+  max-width: 800px;
+}

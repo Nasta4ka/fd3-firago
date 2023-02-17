@@ -1,0 +1,72 @@
+.shoppingCart {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.btn {
+    margin: 20px;
+}
+
+.shoppingItem {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+}
+
+.delete-all, .delete-all:focus {
+    background-color: rgba(219, 66, 66, 0.662);
+    border: 1px solid rgba(27, 31, 35, 0.454);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 14px;
+    padding: 6px 16px;
+    margin: 6px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+.delete-btn, .delete-btn:focus {
+    background-color: rgb(219, 66, 66);
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    padding: 4px 12px;
+    margin: 6px;
+    text-align: center;
+    text-decoration: none;
+}
+  
+.delete-all:hover, .delete-btn:hover {
+      background-color: rgb(153, 23, 23);
+  }
+  .delete-all:active, .delete-btn:active {
+      background-color: rgb(131, 12, 12);
+  }
+  
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.link:visited, .link:active {
+color: #fff;
+text-decoration: none;
+}
