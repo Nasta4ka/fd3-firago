@@ -4,6 +4,7 @@ import { Product } from "./ProductPreview";
 import { ButtonsToBuy } from "./ButtonsToBuy";
 import { NavLink } from "react-router-dom";
 /* import { Pagination } from '../elements/Pagination' */
+import { Loader } from "../elements/Loader";
 import { db } from "../../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -16,8 +17,8 @@ export const List = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [category, setCategory] = useState("all");
   const [isChecked, setIsChecked] = useState(false);
-  const [loading, setLoading] = useState(false);
-/*   const [currentPage, setCurrentPage] = useState('');
+  const [loading, setLoading] = useState(true);
+  /*   const [currentPage, setCurrentPage] = useState('');
   const productsPerPage  = 10;
   const [currentProducts, setCurrentProducts] = useState([])
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -36,7 +37,7 @@ export const List = () => {
       try {
         const data = await getDocs(productsCollectionRef);
         setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        setLoading(true);
+        setLoading(false);
       } catch (e) {
         alert("что-то пошло не так, попробуйте позже", e);
       }
@@ -62,7 +63,7 @@ export const List = () => {
     }
   }, [category, products, isChecked]);
 
- /* const paginate = (pageNumber) => {
+  /* const paginate = (pageNumber) => {
     setCurrentPage(pageNumber)
   }
    */
@@ -71,6 +72,8 @@ export const List = () => {
     <>
       <Controls isChecked={cbIsChecked} checked={isChecked} />
       {loading ? (
+        <Loader />
+      ) : (
         <div className="list-of-products">
           {filteredProducts.map((product) => {
             return (
@@ -99,10 +102,7 @@ export const List = () => {
             );
           })}
         </div>
-      ) : (
-        <h2>Загрузка...</h2>
       )}
-{/*           <Pagination productsPerPage={productsPerPage} category={category} totalProducts={filteredProducts.length} paginate={paginate}/>   */}
     </>
   );
 };

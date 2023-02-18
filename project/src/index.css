@@ -10,7 +10,10 @@ body {
   box-sizing: border-box;
   padding: 0;
   padding-top: 50px;
-  margin: 0;
+  margin: 0;  
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 
@@ -43,6 +46,7 @@ footer {
   align-items: center;
   padding: 10px 0;
   margin: 0;
+  z-index: 10;
 }
 
 
@@ -143,4 +147,42 @@ main {
   margin: 0;
   justify-content: center;
   box-shadow: 0 0 4px rgba(80, 80, 80, 0.3);
+}
+
+.loader {
+margin: auto;
+border: 20px solid #EAF0F6;
+border-radius: 50%;
+border-top: 20px solid mediumaquamarine;
+width: 200px;
+height: 200px;
+animation: spinner 4s linear infinite;
+}
+
+.list-of-products {
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
 }

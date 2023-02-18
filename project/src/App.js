@@ -8,8 +8,7 @@ import { Header } from "./components/pages/Header";
 import { List } from "./components/elements/List";
 import { ProductCard } from "./components/pages/ProductCard";
 import NoMatch from "./components/pages/NoMatch";
-
-const LazyProducts = React.lazy(() => import("./components/pages/Products"));
+import Products from "./components/pages/Products";
 
 function App() {
   return (
@@ -18,14 +17,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route
-            path="products"
-            element={
-              <React.Suspense fallback="loading...">
-                <LazyProducts />
-              </React.Suspense>
-            }
-          >
+          <Route path="products" element={<Products />}>
             <Route index element={<List />} />
             <Route path=":category" index element={<List />} />
             <Route path=":category" element={<List />} />
