@@ -6,11 +6,13 @@
 }
 
 .contact-form input {
+    border: none;
+    outline: none;
     display: inline-flex;
-    padding: 6px 12px;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 0 4px;
+    font-size: 18px;
 }
+
 
 .frame-btn {
     padding: 6px 12px;
@@ -19,9 +21,19 @@
     border-radius: 5px;
 }
 
-.label {
+.label, .label-red {
+    font-size: 18px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    padding: 6px;
+    border: 2px solid mediumaquamarine;
+    border-radius: 6px;
+    width: 300px;
+    margin: 20px 5px 0 5px;
+}
+
+.label-red {
+    border: 2px solid red;
 }

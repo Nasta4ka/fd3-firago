@@ -17,8 +17,8 @@ export const OrderSummary = () => {
   const [isOrdered, setIsOrdered] = useState(false);
   const [name, setName] = useState("");
   const [telephone, setTelephone] = useState("");
-  const [nameLabel, setNameLabel] = useState("ваше имя");
-  const [telLabel, setTelLabel] = useState("ваш номер");
+  const [nameError, setNameError] = useState(false);
+  const [telError, setTelError] = useState(false);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -29,8 +29,7 @@ export const OrderSummary = () => {
     setMessage(str);
   }, []);
 
-  const orderProducts = async (e) => {
-    e.preventDefault();
+  const orderProducts = async () => {
     try {
       await addDoc(ordersCollectionRef, {
         name: name,
@@ -45,13 +44,36 @@ export const OrderSummary = () => {
     }
   };
 
+  const handleProducts = (e) => {
+    e.preventDefault();
+    setNameError(false);
+    setTelError(false);
+    let nameError = null;
+    let telError = null;
+
+    if (name.length > 15 || !name) {
+      setNameError(true);
+      nameError = true;
+    }
+    const number = telephone.replace(/\s/g, "");
+    const isnum = /^\d+$/.test(number);
+    if (number.length !== 9 || !isnum) {
+      setTelError(true);
+      telError = true;
+    }
+    console.log(nameError, telError);
+    if (!nameError && !telError) {
+      orderProducts();
+    }
+  };
+
   return (
     <>
       {state.items && (
         <>
           {!isOrdered && (
-            <form className={"contact-form"} onSubmit={orderProducts}>
-              <label className="label">
+            <form className={"contact-form"} onSubmit={handleProducts}>
+              <label className={nameError ? "label-red" : "label"}>
                 <input
                   type="text"
                   name="name"
@@ -59,18 +81,17 @@ export const OrderSummary = () => {
                   value={name}
                   placeholder="ваше имя"
                 />
-                {nameLabel}
               </label>
-              <label className="label">
+              <label className={telError ? "label-red" : "label"}>
+                <span>+375 </span>
                 <input
                   input
                   type="text"
                   name="telephone"
                   onChange={(e) => setTelephone(e.target.value)}
                   value={telephone}
-                  placeholder="+375 XX XXX XX XX"
+                  placeholder="XX XXX XX XX"
                 />
-                {telLabel}
               </label>
               <div>
                 <b>к оплате {state.totalPrice}$</b>

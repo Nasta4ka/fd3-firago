@@ -5,10 +5,11 @@ export const Controls = (props) => {
   };
 
   return (
-    <label style={{ display: "flex", alignItems: "baseline", margin: "20px" }}>
+    <label style={{ display: "flex", alignItems: "center", margin: "20px" }}>
       {" "}
-      сначала недорогие
+     <span> сначала недорогие</span>
       <input
+      style={{ display: "inline-flex", height: "20px", width: "20px" }}
         type="checkbox"
         className="checkbox"
         checked={props.checked}

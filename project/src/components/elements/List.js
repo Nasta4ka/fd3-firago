@@ -17,9 +17,11 @@ export const List = () => {
   const [category, setCategory] = useState("all");
   const [isChecked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
-  /*  const [currentPage, setCurrentPage] = useState('');
-    const productsPerPage  = 10;
-    const [currentProducts, setCurrentProducts] = useState([]) */
+/*   const [currentPage, setCurrentPage] = useState('');
+  const productsPerPage  = 10;
+  const [currentProducts, setCurrentProducts] = useState([])
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;   */
 
   const cbIsChecked = (value) => {
     setIsChecked(value);
@@ -60,14 +62,10 @@ export const List = () => {
     }
   }, [category, products, isChecked]);
 
-  /*     const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  setCurrentProducts(filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct))
-
-
-  const paginate = (pageNumber) => {
+ /* const paginate = (pageNumber) => {
     setCurrentPage(pageNumber)
-  } */
+  }
+   */
 
   return (
     <>
@@ -104,7 +102,7 @@ export const List = () => {
       ) : (
         <h2>Загрузка...</h2>
       )}
-      {/*     <Pagination productsPerPage={productsPerPage} totalProducts={filteredProducts.length} paginate={paginate}/>  */}
+{/*           <Pagination productsPerPage={productsPerPage} category={category} totalProducts={filteredProducts.length} paginate={paginate}/>   */}
     </>
   );
 };

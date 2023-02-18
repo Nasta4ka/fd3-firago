@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
+export const Pagination = ({ productsPerPage, category, totalProducts, paginate }) => {
   const pageNumbers = [];
+  console.log(category)
   for (let i = 1; i < Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumbers.push(i);
   }
@@ -14,7 +15,8 @@ export const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
             <NavLink
               className={"navlink"}
               onClick={() => paginate(number)}
-              to={"/products/" + number}
+              /* to={"/products/"+category+"="+number} */
+              to={"/products/"+category+'/'+number}
             >
               {number}
             </NavLink>
