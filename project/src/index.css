@@ -9,8 +9,11 @@ body {
   width: 100%;
   box-sizing: border-box;
   padding: 0;
+  padding-top: 50px;
   margin: 0;
 }
+
+
 
 .root {
   width: 100%;
@@ -41,6 +44,7 @@ footer {
   padding: 10px 0;
   margin: 0;
 }
+
 
 header .container {
   box-sizing: border-box;

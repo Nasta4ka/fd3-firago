@@ -7,6 +7,7 @@
     padding: 10px;
     cursor: pointer;
     overflow-x: hidden;
+  
   }
 
 .navlink, .navlink:focus, .navlink:visited, .navlink:active {
@@ -14,4 +15,9 @@
     text-decoration: none; 
 }
 
+@media (max-width: 700px) {
+  .preview-wrapper {
+    width: 300px;
+  }
+}
 

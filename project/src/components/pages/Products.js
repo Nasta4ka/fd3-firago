@@ -1,6 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { Controls } from "../elements/Controls";
 import { NavLink, Outlet } from "react-router-dom";
 
 export default function Products() {
