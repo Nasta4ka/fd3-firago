@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 
 export const Pagination = ({ productsPerPage, category, totalProducts, paginate }) => {
   const pageNumbers = [];
-  console.log(category)
   for (let i = 1; i < Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumbers.push(i);
   }

@@ -9,6 +9,8 @@ require("./shoppingCart.css");
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.itemsInCart);
+
+
   let totalPrice = 0;
   if (items.length) {
     let initialValue = 0;
@@ -21,15 +23,11 @@ export const ShoppingCart = () => {
     dispatch(deleteFromCart([id, quantity]));
   };
 
-  const orderProducts = () => {
-    console.log(items);
-  };
-
   return (
     <>
       <div className="shoppingCart">
         {items.map((item) => (
-          <div className={"shoppingItem"}>
+          <div className={"shoppingItem"} key={item.id}>
             <Product product={item} key={item.id} />
             <span>
               за {item.quantity}шт: <b>{item.quantity * item.price}$</b>
@@ -45,7 +43,7 @@ export const ShoppingCart = () => {
       </div>
       {items.length ? (
         <>
-          <button className={"button-3 btn"} onClick={() => orderProducts()}>
+          <button className={"button-3 btn"}>
             <NavLink
               className={"link"}
               to={"/order"}

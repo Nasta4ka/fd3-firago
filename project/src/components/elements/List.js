@@ -32,7 +32,6 @@ export const List = () => {
     if (params.category) {
       setCategory(params.category);
     }
-    console.log(category);
     const getProducts = async () => {
       try {
         const data = await getDocs(productsCollectionRef);

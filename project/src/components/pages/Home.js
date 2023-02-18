@@ -19,7 +19,6 @@ export const Home = () => {
         "https://api.unsplash.com/search/photos?query=yoga&per_page=20&client_id=Pf1mebDZRa8U9Am9FSD5uznrYTV_fJIPHdJn1I94ri4"
       )
       .then((res) => {
-        console.log(res);
         setImageUrl(res.data.results[5].urls.regular);
         setImageCat1(res.data.results[16].urls.small);
         setImageCat2(res.data.results[8].urls.small);

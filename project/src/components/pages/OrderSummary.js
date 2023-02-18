@@ -22,11 +22,12 @@ export const OrderSummary = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    if(state) {
     let str;
     str = state.items.map(
       (item) => (str = `${item.name}(id : ${item.id}), ${item.quantity}шт; `)
     );
-    setMessage(str);
+    setMessage(str);}
   }, []);
 
   const orderProducts = async () => {
@@ -61,7 +62,6 @@ export const OrderSummary = () => {
       setTelError(true);
       telError = true;
     }
-    console.log(nameError, telError);
     if (!nameError && !telError) {
       orderProducts();
     }
@@ -69,17 +69,16 @@ export const OrderSummary = () => {
 
   return (
     <>
-      {state.items && (
+      {state && (
         <>
           {!isOrdered && (
             <form className={"contact-form"} onSubmit={handleProducts}>
               <label className={nameError ? "label-red" : "label"}>
                 <input
                   type="text"
-                  name="name"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
-                  placeholder="ваше имя"
+                  placeholder={"ваше имя"}
                 />
               </label>
               <label className={telError ? "label-red" : "label"}>
@@ -87,17 +86,16 @@ export const OrderSummary = () => {
                 <input
                   input
                   type="text"
-                  name="telephone"
                   onChange={(e) => setTelephone(e.target.value)}
                   value={telephone}
-                  placeholder="XX XXX XX XX"
+                  placeholder={"XX XXX XX XX"}
                 />
               </label>
               <div>
                 <b>к оплате {state.totalPrice}$</b>
               </div>
               <p>{message}</p>
-              <button type="submit" className="button-3">
+           <button type="submit" className="button-3">
                 заказать
               </button>
             </form>
